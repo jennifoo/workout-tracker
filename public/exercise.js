@@ -1,18 +1,24 @@
 const workoutTypeSelect = document.querySelector("#type");
+// CARDIO
 const cardioForm = document.querySelector(".cardio-form");
-const resistanceForm = document.querySelector(".resistance-form");
 const cardioNameInput = document.querySelector("#cardio-name");
+const distanceInput = document.querySelector("#distance");
+const durationInput = document.querySelector("#duration");
+// RESISTANCE
+const resistanceForm = document.querySelector(".resistance-form");
 const nameInput = document.querySelector("#name");
 const weightInput = document.querySelector("#weight");
 const setsInput = document.querySelector("#sets");
 const repsInput = document.querySelector("#reps");
-const durationInput = document.querySelector("#duration");
 const resistanceDurationInput = document.querySelector("#resistance-duration");
-const distanceInput = document.querySelector("#distance");
+// GENERAL FORM
 const completeButton = document.querySelector("button.complete");
 const addButton = document.querySelector("button.add-another");
 const toast = document.querySelector("#toast");
+// OTHER
 const newWorkout = document.querySelector(".new-workout")
+
+// **************************************** //
 
 let workoutType = null;
 let shouldNavigateAway = false;
@@ -32,9 +38,10 @@ async function initExercise() {
 
 initExercise();
 
+// Once user selects
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
-
+  
   if (workoutType === "cardio") {
     cardioForm.classList.remove("d-none");
     resistanceForm.classList.add("d-none");
@@ -52,6 +59,7 @@ function handleWorkoutTypeChange(event) {
 function validateInputs() {
   let isValid = true;
 
+  // If fields are empty, they will not be valid.
   if (workoutType === "resistance") {
     if (nameInput.value.trim() === "") {
       isValid = false;
@@ -85,7 +93,7 @@ function validateInputs() {
       isValid = false;
     }
   }
-
+  // If valid, the buttons will be clickable
   if (isValid) {
     completeButton.removeAttribute("disabled");
     addButton.removeAttribute("disabled");
@@ -137,6 +145,7 @@ function clearInputs() {
   weightInput.value = "";
 }
 
+// Add event listener if user action alters value through the select options for cardio vs resistance.
 if (workoutTypeSelect) {
   workoutTypeSelect.addEventListener("change", handleWorkoutTypeChange);
 }
