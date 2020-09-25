@@ -38,10 +38,10 @@ async function initExercise() {
 
 initExercise();
 
-// Once user selects
+// Once user selects an option, the appropriate fields appear to enter exercises depending on if it's resistance vs cardio. The workouts are hard coded. This narrows the scope in terms of what tables need to be created.
 function handleWorkoutTypeChange(event) {
   workoutType = event.target.value;
-  
+
   if (workoutType === "cardio") {
     cardioForm.classList.remove("d-none");
     resistanceForm.classList.add("d-none");
