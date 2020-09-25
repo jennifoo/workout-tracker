@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+var path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,17 +18,15 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { userNewUrlParser: true });
 
-// app.get("", (req, res) => {
+app.get("/exercise", (req, res) => {
+ res.sendFile(path.join(__dirname, "./public/exercise.html"));
+})
+
+// app.get("/exercise?", (req, res) => {
 //
 // })
 
-// app.post("", (req, res) => {
-//
-// })
 
-// app.put("", (req, res) => {
-//
-// })
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
