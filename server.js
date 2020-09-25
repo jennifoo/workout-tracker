@@ -32,22 +32,12 @@ app.get("/exercise", (req, res) => {
 })
 
 
-
 app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
   .then(dbWorkout => {
     res.json(dbWorkout);
   })
 });
-
-
-// app.put("/api/workouts/cardio", ( { body }, res) => {
-//  db.Cardio.create(body)
-//  .then(console.log("added" + body))
-//  .catch(err => {
-//   res.json(err);
-// });
-// })
 
 
 app.put("/api/workouts/:id", (req, res) => {
@@ -64,12 +54,7 @@ app.put("/api/workouts/:id", (req, res) => {
   res.json(err);
   });
   })
-// 5f6e6ade3a46fdc57ab41603 lastWorkout
-// GET /exercise?id=5f6e6ade3a46fdc57ab41603 200 1.368 ms - 3494
-// GET /style.css 304 3.376 ms - -
-// GET /api.js 304 3.540 ms - -
-// GET /exercise.js 304 0.524 ms - -
-// PUT /api/workouts/5f6e6ade3a46fdc57ab41603 404 14.834 ms - 176
+
 
 app.post("/api/workouts", ({ body }, res) => {
   // body -----> {}
@@ -80,7 +65,6 @@ app.post("/api/workouts", ({ body }, res) => {
    res.json(err);
  });
 })
-
 
 
 // These routes below are for checking whats in the tables:
@@ -104,18 +88,11 @@ app.post("/api/workouts", ({ body }, res) => {
            })
          });
 
-         /*
-
-         [
-         {"cardio":[],"resistance":[],"_id":"5f6e6903284861c54b50a7b9","__v":0},
-         {"cardio":[],"resistance":[],"_id":"5f6e691fca38e9c54f0d88a4","__v":0},
-         {"cardio":[],"resistance":[],"_id":"5f6e6a203a46fdc57ab41602","__v":0},
-         {"cardio":[],"resistance":[],"_id":"5f6e6ade3a46fdc57ab41603","__v":0}]
-
+         /* WORKOUT WITH EXERCISES:
+            [{"exercises":[
+            {"type":"cardio","name":"B","distance":2,"duration":2},
+            {"type":"cardio","name":"C","distance":3,"duration":3}],"_id":"5f6e79629f77cdc84101b5c2","__v":0}]
          */
-
-
-
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
