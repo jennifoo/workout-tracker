@@ -17,13 +17,7 @@ const ResistanceSchema = new Schema({
   },
   duration: {
     type: Number
-  },
-  exercises: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Exercise"
-    }
-  ]
+  }
 });
 
 const Resistance = mongoose.model("Resistance", ResistanceSchema);

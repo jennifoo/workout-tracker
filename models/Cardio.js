@@ -11,13 +11,7 @@ const CardioSchema = new Schema({
   },
   duration: {
     type: Number
-  },
-  exercises: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Exercise"
-    }
-  ]
+  }
 });
 
 const Cardio = mongoose.model("Cardio", CardioSchema);
