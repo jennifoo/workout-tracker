@@ -2,5 +2,7 @@
 
 module.exports = {
   Cardio: require("./Cardio"),
-  Resistance: require("./Resistance")
+  Resistance: require("./Resistance"),
+  Workout: require("./Workout")
+
 };

@@ -22,9 +22,12 @@ app.get("/exercise", (req, res) => {
  res.sendFile(path.join(__dirname, "./public/exercise.html"));
 })
 
-// app.post("/api/workouts", (req, res) => {
-//
-// });
+app.get("/api/workouts", (req, res) => {
+  db.Workout.find({})
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+});
 
 app.put("/api/workouts/cardio", ( { body }, res) => {
  db.Cardio.create(body)
@@ -37,7 +40,6 @@ app.put("/api/workouts/cardio", ( { body }, res) => {
 // app.put("/api/workouts/resistance", (req, res) => {
 //
 // })
-
 
 app.get("/api/cardio", (req, res) => {
  db.Cardio.find({})
