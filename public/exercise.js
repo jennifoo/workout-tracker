@@ -125,7 +125,9 @@ async function handleFormSubmit(event) {
   await API.addExercise(workoutData);
   clearInputs();
   toast.classList.add("success");
-}
+  
+} // End handleFormSubmit
+
 
 function handleToastAnimationEnd() {
   toast.removeAttribute("class");
