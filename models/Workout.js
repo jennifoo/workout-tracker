@@ -6,18 +6,18 @@ const WorkoutSchema = new Schema({
   name: {
     type: String
   },
-  cardio: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Cardio"
-    }
-  ],
-  resistance: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Resistance"
-    }
+  exercises: [
+    // {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Cardio"
+    // }
   ]
+  // resistance: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Resistance"
+  //   }
+  // ]
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

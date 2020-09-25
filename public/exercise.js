@@ -23,6 +23,7 @@ const newWorkout = document.querySelector(".new-workout")
 let workoutType = null;
 let shouldNavigateAway = false;
 
+// Generates the params in the URL
 async function initExercise() {
   let workout;
 
@@ -33,9 +34,7 @@ async function initExercise() {
   if (workout) {
     location.search = "?id=" + workout._id;
   }
-
 }
-
 initExercise();
 
 // Once user selects an option, the appropriate fields appear to enter exercises depending on if it's resistance vs cardio. The workouts are hard coded. This narrows the scope in terms of what tables need to be created.
@@ -125,7 +124,7 @@ async function handleFormSubmit(event) {
   await API.addExercise(workoutData);
   clearInputs();
   toast.classList.add("success");
-  
+
 } // End handleFormSubmit
 
 
