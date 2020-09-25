@@ -22,6 +22,33 @@ app.get("/exercise", (req, res) => {
  res.sendFile(path.join(__dirname, "./public/exercise.html"));
 })
 
+// app.post("/api/workouts", (req, res) => {
+//
+// });
+
+app.put("/api/workouts/cardio", ( { body }, res) => {
+ db.Cardio.create(body)
+ .then(console.log("added" + body))
+ .catch(err => {
+  res.json(err);
+});
+})
+
+// app.put("/api/workouts/resistance", (req, res) => {
+//
+// })
+
+
+app.get("/api/cardio", (req, res) => {
+ db.Cardio.find({})
+ .then(dbCardio => {
+   res.json(dbCardio);
+ })
+ .catch(err => {
+   res.json(err);
+ })
+})
+
 // app.get("/exercise?", (req, res) => {
 //
 // })

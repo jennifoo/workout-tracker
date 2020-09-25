@@ -13,13 +13,20 @@ const API = {
   },
   // ADD EXERCISE
   async addExercise(data) {
+    // location.search references the param in the URL and the data info appears in the URL.
     const id = location.search.split("=")[1];
 
+    // ID would be either cardio or resistance.
     const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
+    // const res = await fetch("/api/workouts/cardio" {
+    //   method: "PUT",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(data)
+    // });
 
     const json = await res.json();
 
