@@ -39,7 +39,7 @@ app.get("/api/workouts", (req, res) => {
   })
 });
 
-
+// WORKING - ADD EXERCISE TO WORKOUT, AFTER HITTING CONTINUE WORKOUT
 app.put("/api/workouts/:id", (req, res) => {
   let workId = req.params.id; //5f6e6fe21e6f8ac5fa89adab
   console.log("workId: " + workId);
@@ -58,9 +58,14 @@ app.put("/api/workouts/:id", (req, res) => {
 
 app.post("/api/workouts", ({ body }, res) => {
   // body -----> {}
-  console.log("POST: api/workouts body: " + JSON.stringify(body));
+  // console.log("POST: api/workouts body: " + JSON.stringify(body));
   db.Workout.create(body)
-  .then(console.log("added: " + JSON.stringify(body)))
+  // .then(console.log("CreateWorkout_AddedBody: " + JSON.stringify(body)))
+  .then(dbWork => {
+    res.json(dbWork); // Front End is using dot notation to pull the id.
+    // console dbWork.id -----> 5f6e91a2ba2ca1c94bee0393
+    // console.log("CreateWorkout_ReturnId: " + dbWorkId);
+  })
   .catch(err => {
    res.json(err);
  });
