@@ -11,6 +11,32 @@ const WorkoutSchema = new Schema({
     default: Date.now // Needed to set a default, otherwise "Invalid"
   },
   exercises: [
+    {
+      type: {
+        type: String
+      },
+      name: {
+        type: String
+      },
+      distance: {
+        type: Number
+      },
+      duration: {
+        type: Number
+      },
+      weight: {
+        type: Number
+      },
+      sets: {
+        type: Number
+      },
+      reps: {
+        type: Number
+      },
+      duration: {
+        type: Number
+      }
+    }
   ]
 }, {
   timestamps: true
