@@ -7,7 +7,7 @@ async function initWorkout() {
       .setAttribute("href", `/exercise?id=${lastWorkout._id}`);
 
     const workoutSummary = {
-      date: formatDate(lastWorkout.day),
+      date: formatDate(lastWorkout.day), // Added to Schema
       totalDuration: lastWorkout.totalDuration,
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
@@ -42,6 +42,11 @@ function formatDate(date) {
   };
 
   return new Date(date).toLocaleDateString(options);
+  /* toLocaleDateString
+  const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  console.log(event.toLocaleDateString(undefined, options));
+  */
 }
 
 function renderWorkoutSummary(summary) {

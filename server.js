@@ -2,29 +2,27 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 var path = require("path");
-
 const PORT = process.env.PORT || 3000;
-
 const db = require("./models")
-
 const app = express();
-
 app.use(logger("dev"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { userNewUrlParser: true });
 
-// NOTE on load to root, URL dynamically changes to include info about last workout: http://localhost:3000/?id=5f6e6ade3a46fdc57ab41603
+// **************************************** //
 
+// NOTE on root load, URL dynamically changes to include info about last workout: http://localhost:3000/?id=5f6e6ade3a46fdc57ab41603
+
+// HTML ROUTE
 app.get("/exercise", (req, res) => {
  res.sendFile(path.join(__dirname, "./public/exercise.html"));
 })
 
+// **************************************** //
 
+// GET: LIST ALL WORKOUTS - so front end can determine last workout (getLastWorkout)
 app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
   .then(dbWorkout => {
@@ -32,7 +30,7 @@ app.get("/api/workouts", (req, res) => {
   })
 });
 
-// WORKING - ADD EXERCISE TO WORKOUT, AFTER HITTING CONTINUE WORKOUT
+// PUT: WORKING - ADD EXERCISE TO WORKOUT, AFTER HITTING CONTINUE WORKOUT
 app.put("/api/workouts/:id", (req, res) => {
   let workId = req.params.id; //5f6e6fe21e6f8ac5fa89adab
   console.log("workId: " + workId);
@@ -48,7 +46,7 @@ app.put("/api/workouts/:id", (req, res) => {
   });
   })
 
-
+// POST: CREATE NEW WORKOUT
 app.post("/api/workouts", ({ body }, res) => {
   // body -----> {}
   // console.log("POST: api/workouts body: " + JSON.stringify(body));
@@ -63,8 +61,7 @@ app.post("/api/workouts", ({ body }, res) => {
  });
 })
 
-
-// These routes below are for checking whats in the tables:
+  // This route is for checking whats in the tables:
           app.get("/api/workout", (req, res) => {
            db.Workout.find({})
            .then(dbWork => {
