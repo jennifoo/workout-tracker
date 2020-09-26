@@ -163,16 +163,3 @@ toast.addEventListener("animationend", handleToastAnimationEnd);
 document
   .querySelectorAll("input")
   .forEach(element => element.addEventListener("input", validateInputs));
-
-  /*
-  [
-  {"exercises":
-  [{"type":"cardio","name":"B","distance":2,"duration":2},
-  {"type":"cardio","name":"C","distance":3,"duration":3}],"_id":"5f6e79629f77cdc84101b5c2","__v":0},
-
-  {"exercises":[],"_id":"5f6e8fce214dafc927bc6b41","__v":0},
-  {"exercises":[],"_id":"5f6e91a2ba2ca1c94bee0393","__v":0},
-  {"exercises":[],"_id":"5f6e92f3ba2ca1c94bee0394","__v":0},
-  {"exercises":[],"_id":"5f6e93cbb68785c976692698","__v":0},
-  {"exercises":[],"_id":"5f6e94fbb68785c976692699","__v":0}]
-  */

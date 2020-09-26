@@ -22,11 +22,6 @@ const API = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-    // const res = await fetch("/api/workouts/cardio" {
-    //   method: "PUT",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data)
-    // });
 
     const json = await res.json();
 

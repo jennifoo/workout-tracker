@@ -20,13 +20,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb"
 
 // NOTE on load to root, URL dynamically changes to include info about last workout: http://localhost:3000/?id=5f6e6ade3a46fdc57ab41603
 
-// NOTE when creating new workout and doing put these are the errors:
-/*
-    api.js:20 PUT http://localhost:3000/api/workouts/undefined 404 (Not Found)
-    addExercise @ api.js:20
-    handleFormSubmit @ exercise.js:125
-    exercise.js:129 Uncaught (in promise) SyntaxError: Unexpected token < in JSON at position 0 */
-
 app.get("/exercise", (req, res) => {
  res.sendFile(path.join(__dirname, "./public/exercise.html"));
 })
@@ -64,7 +57,6 @@ app.post("/api/workouts", ({ body }, res) => {
   .then(dbWork => {
     res.json(dbWork); // Front End is using dot notation to pull the id.
     // console dbWork.id -----> 5f6e91a2ba2ca1c94bee0393
-    // console.log("CreateWorkout_ReturnId: " + dbWorkId);
   })
   .catch(err => {
    res.json(err);
