@@ -65,16 +65,6 @@ app.post("/api/workouts", ({ body }, res) => {
 
 
 // These routes below are for checking whats in the tables:
-          app.get("/api/cardio", (req, res) => {
-           db.Cardio.find({})
-           .then(dbCardio => {
-             res.json(dbCardio);
-           })
-           .catch(err => {
-             res.json(err);
-           })
-         });
-
           app.get("/api/workout", (req, res) => {
            db.Workout.find({})
            .then(dbWork => {
