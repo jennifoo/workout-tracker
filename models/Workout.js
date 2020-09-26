@@ -11,11 +11,11 @@ const WorkoutSchema = new Schema({
     default: Date.now // Needed to set a default, otherwise "Invalid"
   },
   exercises: [
-  ],
-  totalDuration: {
-    type: Number
-  }
-});
+  ]
+}, {
+  timestamps: true
+}
+);
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
 

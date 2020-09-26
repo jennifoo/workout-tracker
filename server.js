@@ -20,6 +20,11 @@ app.get("/exercise", (req, res) => {
  res.sendFile(path.join(__dirname, "./public/exercise.html"));
 })
 
+app.get("/stats", (req, res) => {
+ res.sendFile(path.join(__dirname, "./public/stats.html"));
+})
+
+
 // **************************************** //
 
 // GET: LIST ALL WORKOUTS - so front end can determine last workout (getLastWorkout)
@@ -28,6 +33,15 @@ app.get("/api/workouts", (req, res) => {
   .then(dbWorkout => {
     res.json(dbWorkout);
   })
+});
+
+app.get("/api/workouts/range", (req, res) => {
+  db.Workout.find({})
+  .limit(7)
+  .then(dbWorkout => {
+    res.json(dbWorkout);
+  })
+
 });
 
 // PUT: WORKING - ADD EXERCISE TO WORKOUT, AFTER HITTING CONTINUE WORKOUT
