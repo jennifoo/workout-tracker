@@ -9,7 +9,7 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { userNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { userNewUrlParser: true }); // Name of database: custommethoddb
 
 // **************************************** //
 
